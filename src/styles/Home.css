@@ -121,10 +121,13 @@
     box-shadow: 2px 3px 25px rgba(43, 255, 0, 0.6);
 }
 
-.shit ul li a {
+.shit ul li {
     color: white;
     text-decoration: none;
     font-size: 2em;
+}
+.shit ul a{
+    text-decoration: none;
 }
 
 @media only screen and (max-width: 736px) {

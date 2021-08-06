@@ -16,7 +16,7 @@ function Home() {
                     </div>
                     <div className="flaticon">
 
-                        <img className="icon"  alt =" " src={cred} />
+                        <img className="icon" alt=" " src={cred} />
                     </div>
                     <div className="flaticon">
 
@@ -29,8 +29,8 @@ function Home() {
                     <div className="row shit">
                         <h1 className="home-heading">SERVICES</h1>
                         <ul>
-                            <li><Link to="users">TRANSFER</Link></li>
-                            <li><Link to="/history">  TRANSACTIONS </Link></li>
+                            <Link to="users"> <li>TRANSFER</li></Link>
+                            <Link to="/history">   <li>TRANSACTIONS </li></Link>
                         </ul>
                     </div>
                 </div>
