@@ -1,0 +1,60 @@
+.navbar {
+    background-color: rgb(54, 54, 54);
+}
+
+.logo-link {
+    color: black;
+    font-size: 2em;
+    text-decoration: none;
+}
+
+.logo-link:hover {
+    color: black;
+}
+
+.navbar-toggler {
+    background-color: rgb(112, 112, 112);
+    font-weight: bolder;
+}
+
+.navbar-toggler:hover {
+    background-color: rgb(68, 68, 68);
+}
+
+.link {
+    font-size: 1em;
+    text-decoration: none;
+    color: rgb(209, 209, 209);
+    margin-right: 20px;
+}
+
+.link:hover {
+    color: rgb(209, 209, 209);
+}
+
+.nav-item {
+    text-align: center;
+    padding: 5px 5px;
+    font-weight: bolder;
+}
+
+.logo {
+    border: solid 2px rgb(209, 209, 209);
+    padding: 5px 5px;
+    border-radius: 20px;
+    margin-right: 50px;
+    color: rgb(209, 209, 209);
+    text-align: center;
+}
+
+@media only screen and (max-width: 992px) {
+    .logo {
+        width: 90vw;
+    }
+}
+
+@media only screen and (max-width:586px) {
+    .logo {
+        width: 50vw;
+    }
+}
