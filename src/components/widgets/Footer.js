@@ -32,7 +32,7 @@ function Footer() {
                             <li><a href="https://himanshu-react-weather-app.netlify.app/" target="_blank" rel="noreferrer"> <i className="fa fa-cloud "></i> Wearther app</a></li>
                             <li><a href="https://himanshu-connect-four-game.netlify.app/" target="_blank" rel="noreferrer"><i className="fa fa-gamepad "></i> connect four game app</a></li>
                             <li><a href="https://himanshu17-2000.github.io/himanshu1/portfolio.html" target="_blank" rel="noreferrer"><i className="fa fa-user "></i> portfolio app</a></li>
-                            <li><a href="https://himanshu-photogalary.netlify.app/" target="_blank" rel="noreferrer" ><i className="fa fa-picture-o" aria-hidden="true"></i> Full-stack gallery</a></li>
+                            <li><a href="https://himanshu-fullstack-photogalary.netlify.app/" target="_blank" rel="noreferrer" ><i className="fa fa-picture-o" aria-hidden="true"></i> Full-stack gallery</a></li>
                         </ul>
                     </div>
                 </div>
