@@ -11,7 +11,7 @@ function Users() {
 
         })
 
-    }, [])
+    }, null)
     return (
         <div className="users">
             <h1 className="history-header">CUSTOMERS</h1>
