@@ -1,10 +1,12 @@
 .home {
     min-width: fit-content;
+    background-color: rgb(53, 53, 53);
+    position: relative;
+    padding-top: 80px;
 }
 
 .home-contianer {
     min-height: 100vh;
-    background-color: rgb(53, 53, 53);
     padding: 10px;
 }
 
@@ -35,7 +37,6 @@
 }
 
 .shit {
-    
     position: absolute;
     left: 10px;
     margin-top: 20%;
@@ -78,8 +79,9 @@
     font-size: 5vw;
     top: 30%;
 }
-.btn{
-    box-shadow: 2px 2px rgba(201, 201, 201,0.7);
+
+.btn {
+    box-shadow: 2px 2px rgba(201, 201, 201, 0.7);
 }
 
 .heading-text span {
@@ -114,9 +116,11 @@
     font-size: 1vw;
     transition: 0.7s all;
 }
-.shit ul li:hover{
+
+.shit ul li:hover {
     box-shadow: 2px 3px 25px rgba(43, 255, 0, 0.6);
 }
+
 .shit ul li a {
     color: white;
     text-decoration: none;
