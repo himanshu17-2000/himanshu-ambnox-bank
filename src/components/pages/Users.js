@@ -14,7 +14,7 @@ function Users() {
     }, [])
     return (
         <div className="users">
-
+            <h1 className="history-header">CUSTOMERS</h1>
             <table className="tbl table" >
                 <tbody>
                     <tr>
@@ -26,7 +26,7 @@ function Users() {
                         <th>Transact</th>
                     </tr>
                     {users.map((item) => {
-                       
+
 
                         return (<tr key={item.account}>
                             <td>{item.name}</td>
