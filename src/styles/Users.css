@@ -5,7 +5,7 @@
 }
 
 .users {
-    min-height: 42.5vw;
+    min-height: 100vh;
     background: rgb(54, 54, 54);
     overflow: scroll;
 }

@@ -3,7 +3,7 @@
 }
 
 .home-contianer {
-    min-height: 31.5vw;
+    min-height: 100vh;
     background-color: rgb(53, 53, 53);
     padding: 10px;
 }

@@ -7,7 +7,8 @@ const TEXTS = [
     "GROW",
     "REDEEM"
 ];
-function Text_changer() {
+
+function TextChanger() {
     const [index, setIndex] = React.useState(0);
 
     React.useEffect(() => {
@@ -29,5 +30,4 @@ function Text_changer() {
     )
 }
 
-export default Text_changer
-
+export default TextChanger

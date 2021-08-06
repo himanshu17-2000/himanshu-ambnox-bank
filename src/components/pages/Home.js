@@ -2,7 +2,7 @@ import React from 'react'
 import Footer from "../widgets/Footer"
 
 import cred from "../../images/credit-card.png"
-import Text_changer from '../widgets/Text_changer'
+import TextChanger from '../widgets/TextChanger'
 import "../../styles/Home.css"
 import { Link } from 'react-router-dom'
 function Home() {
@@ -22,7 +22,7 @@ function Home() {
 
                         <Link to="/register"><button className="btn btn-dark">REGISTER NOW </button> </Link>
                     </div>
-                    <Text_changer />
+                    <TextChanger />
                 </div>
 
                 <div className="contianer content2">

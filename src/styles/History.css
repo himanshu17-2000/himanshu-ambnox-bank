@@ -7,7 +7,7 @@
 .history {
     margin-top: 2px;
     background: rgb(54, 54, 54);
-    min-height: 42.5vw;
+    min-height: 100vh;
     overflow: scroll;
     padding-left: 10px;
     padding-right: 10px;

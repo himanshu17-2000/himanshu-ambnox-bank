@@ -31,7 +31,7 @@ const Demo = () => {
                 console.log("Error getting documents: ", error);
             });
 
-    }, null)
+    }, [])
     function submithandler(e) {
         e.preventDefault()
         if (toname !== "" && money !== "") {
