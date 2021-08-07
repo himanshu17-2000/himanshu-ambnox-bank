@@ -11,9 +11,9 @@ function Footer() {
                     <div className="col-lg-4 footer-col">
                         <h6>Follow me</h6>
                         <ul>
-                            <li className="follow-list" id="linkedin"  ><a href="https://www.linkedin.com/in/himanshu-kumar-amb/"  rel="noreferrer" target="_blank"> <i className="fa fa-linkedin "></i>. linked in </a></li>
-                            <li className="follow-list" id="instagram" ><a href="https://www.instagram.com/himanshu_kumar_amb/" rel="noreferrer" target="_blank"> <i className="fa fa-instagram "></i>. instagram </a></li>
-                            <li className="follow-list" id="github"><a href="#"  rel="noreferrer" target="_blank"> <i className="fa fa-github "></i>.github </a></li>
+                            <li className="follow-list" id="linkedin"  ><a href="https://www.linkedin.com/in/himanshu-kumar-amb/"  rel="noreferrer" target="blank"> <i className="fa fa-linkedin "></i>. linked in </a></li>
+                            <li className="follow-list" id="instagram" ><a href="https://www.instagram.com/himanshu_kumar_amb/" rel="noreferrer" target="blank"> <i className="fa fa-instagram "></i>. instagram </a></li>
+                            <li className="follow-list" id="github"><a href="#"  rel="noreferrer" > <i className="fa fa-github "></i>.github </a></li>
                         </ul>
 
                     </div>
