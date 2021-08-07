@@ -14,8 +14,10 @@
     position: relative;
     float: left;
     width: 70vw;
-    height: 29vw;
+    min-height: 29vw;
     box-shadow: -2px -2px white;
+    padding-left: 10px;
+    overflow: hidden;
     border-radius: 10px 60px 20px;
     background: linear-gradient(to bottom right, rgba(53, 53, 53, 0.6), rgba(153, 153, 153, 0.6));
 }
@@ -30,22 +32,12 @@
     background: linear-gradient(to bottom right, rgba(53, 53, 53, 0.6), rgba(153, 153, 153, 0.6));
 }
 
-.btn {
-    position: relative;
-    top: 50px;
-    border-radius: 0px 15px 15px 0px;
-}
-
 .shit {
-    position: absolute;
-    left: 10px;
-    margin-top: 20%;
+    width: 100%;
 }
 
 .home-heading {
-    transform: scale(0.8);
-    width: 30vw;
-    border-radius: 10px;
+    border-radius: 10px 50px 10px 10px;
     box-shadow: 2px 5px 10px rgba(182, 182, 182, 0.6);
     color: #f0f8ff;
     text-align: center;
@@ -61,33 +53,32 @@
 }
 
 .heading-text {
+    border-top: 2px solid rgba(170, 170, 170, 0.623);
     text-shadow: 2px 2px black;
-    float: left;
     color: beige;
-    padding-left: 5px;
+    padding-left: 15px;
     box-shadow: 2px 2px rgb(48, 48, 48);
-    width: 50vw;
-    height: 8vw;
-    text-align: center;
+    min-height: 8vw;
     border-radius: 0px 50px 50px 0px;
     position: relative;
-    top: 10%;
-    background: linear-gradient(to bottom right, rgba(31, 12, 12, 0.6), rgba(133, 133, 133, 0.6));
+    top: 3vw;
+    background: linear-gradient(to bottom right, rgba(153, 153, 153, 0.6), rgba(0, 0, 0, 0.6));
 }
 
 .heading-text h1 {
+    color: #d4d4d4;
     font-size: 5vw;
-    top: 30%;
+    width: 100%;
+    text-align: start;
 }
 
-.btn {
-    box-shadow: 2px 2px rgba(201, 201, 201, 0.7);
+.heading-text h6 {
+    font-size: 5vw;
+    width: 100%;
 }
 
-.heading-text span {
-    color: rgb(189, 189, 189);
-    text-shadow: 2px 1px black;
-    font-size: 1em;
+#heading-para {
+    font-size: 1.1vw;
 }
 
 .icon {
@@ -104,16 +95,17 @@
 }
 
 .shit ul {
+    position: relative;
+    left: -20px;
+    margin: 20px;
     text-align: center;
     list-style: none;
 }
 
 .shit ul li {
     margin-bottom: 5px;
-    transform: scale(0.6);
     box-shadow: 2px 2px 15px rgba(143, 143, 143, 0.6);
     background: linear-gradient(to top right, rgba(53, 53, 53, 0.6), rgba(153, 153, 153, 0.6));
-    font-size: 1vw;
     transition: 0.7s all;
 }
 
@@ -126,9 +118,34 @@
     text-decoration: none;
     font-size: 2em;
 }
-.shit ul a{
+
+.shit ul a {
+    font-size: 0.8vw;
     text-decoration: none;
 }
+
+.register {
+    overflow: hidden;
+    height: auto;
+    padding-top: 20px;
+    padding-bottom: 2px;
+}
+
+.register button {
+    position: relative;
+    z-index: 1;
+    box-shadow: 2px 2px white;
+    width: 20vw;
+    font-size: 1.5vw;
+    color: #f0f8ff;
+    font-weight: bolder;
+    border: none;
+    padding: 10px 10px;
+    border-radius: 10px;
+    background: linear-gradient(to right, rgba(25, 25, 25, 0.3), rgba(25, 25, 25, 0.3));
+    transition: all 0.6s;
+}
+
 
 @media only screen and (max-width: 736px) {
     .content1 {
@@ -138,5 +155,23 @@
     .content2 {
         display: block;
         width: 90vw;
+        margin-top: 20px;
+        text-align: center;
+        position: relative;
+        border: 2px solid;
+        border-radius: 10px 20px 10px 10px;
+    }
+    .shit {
+        text-align: center;
+        position: absolute;
+        top: 0px;
+    }
+    .home-heading {
+        width: 100%;
+    }
+    .register {
+        transform: scale(1);
+        position: relative;
+        bottom: 20px;
     }
 }

@@ -11,7 +11,7 @@ function Navbar() {
                 <div className="container-fluid">
                     <Link className="logo-link" to="/"  >
                         <div className="logo">
-                            AMBNOX BANKING
+                            AMBNOX 
                         </div>
                     </Link>
                     

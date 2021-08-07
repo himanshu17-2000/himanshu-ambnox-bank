@@ -13,7 +13,7 @@ const Demo = () => {
     const [senderamount, setsenderammount] = useState(null)
     const [toname, settoname] = useState("")
     const [money, setmoney] = useState("")
-  
+
     useEffect(() => {
         db.collection("customers").where("name", "==", fromname).get()
             .then((querySnapshot) => {
@@ -76,26 +76,24 @@ const Demo = () => {
                                             .then(() => {
                                                 console.log(date, time)
 
-
                                             })
                                             .catch(error => {
                                                 alert(error.message)
                                             })
-                                        setmessage(  "Money transfered : " + money + " rs from " + fromname + " to " + toname)
+                                        setmessage("Money transfered : " + money + " rs from " + fromname + " to " + toname)
 
 
 
 
 
                                     });
-                                })
-                                .catch((error) => {
+                                }).catch((error) => {
                                     console.log("Error getting documents: ", error);
                                 });
 
                         }
                         else {
-                            
+
                             setmoney(null)
                             settoname("")
                             setmessage(" AMOUNT TOO MUCH TRANSACTION FAILED !")
@@ -108,8 +106,8 @@ const Demo = () => {
                 });
 
             setmoney("")
-            settoname("") 
-           
+            settoname("")
+
         }
         else {
             alert("sab fields bharo")
@@ -121,9 +119,9 @@ const Demo = () => {
         <div className="demo-class">
             <h1 className="demo-header">AMBNOX EXPRESS TRANSFER</h1>
             <div className="demo-intro">
-                <span id="name">Name : {sender}</span><br />
-                <span id="account">Account : {senderaccount}</span><br />
-                <span id="amount">Amount :  {senderamount}</span><br />
+                <span id="name">Name :- {sender}</span><br />
+                <span id="account">Account :- {senderaccount}</span><br />
+                <span id="amount">Amount :- {senderamount}</span><br />
             </div>
             <form className="demo-form" onSubmit={submithandler}>
                 <label>Reciever </label><br />

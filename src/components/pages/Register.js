@@ -100,7 +100,7 @@ function Register() {
 
 
                     <div >
-                        <button type="submit" className="btn button  submit btn-light">SUBMIT</button>
+                        <button type="submit" className=" button  submit ">SUBMIT</button>
                     </div>
                 </div>
 
