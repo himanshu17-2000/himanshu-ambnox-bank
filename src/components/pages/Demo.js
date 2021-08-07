@@ -38,7 +38,7 @@ const Demo = () => {
             db.collection("customers").where("name", "==", fromname).get()
                 .then((querySnapshot) => {
                     querySnapshot.forEach((doc) => {
-                        if (money <= doc.data().amount) {
+                        if (money <= doc.data().amount){
                             db.collection("customers").doc(doc.id).set({
                                 name: doc.data().name,
                                 email: doc.data().email,

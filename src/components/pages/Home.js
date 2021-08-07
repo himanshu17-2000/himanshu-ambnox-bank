@@ -13,7 +13,7 @@ function Home() {
                     <div className="row">
                         <div className=" col-lg-9 col-md-9 col-sm-9  heading-text">
                             <h1> AMBNOX BANKING   </h1>
-                            
+
                             <div className="register">
                                 <Link to="/register"><button className="button" >REGISTER NOW </button> </Link>
                                 <TextChanger className="change" />
@@ -24,7 +24,10 @@ function Home() {
                             <img className="icon" alt=" " src={cred} />
                         </div>
                     </div>
-
+                    <div className="random">
+                        <h4>xxxx xxxx xxxx xxxx    </h4>
+                        <h5>valid upto mm/25</h5>
+                    </div>
 
                 </div>
 

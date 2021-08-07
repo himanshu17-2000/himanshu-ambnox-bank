@@ -8,7 +8,7 @@ function History() {
         return Math.floor(Math.random() * (max - min + 1) + min)
     }
     useEffect(() => {
-        db.collection('history2').orderBy("date", "desc").orderBy("time", "desc").onSnapshot(snapshot => {
+        db.collection('history2').orderBy("date", "desc").orderBy("time", "desc").limit(17).onSnapshot(snapshot => {
             sethistory(snapshot.docs.map(doc => doc.data()))
         })
 
@@ -16,7 +16,7 @@ function History() {
     return (
         <div className="history" >
             <h1 className="history-header">TRANSACTION HISTORY</h1>
-            <table className="tble "  >
+            <table className="tble ">
                 <tbody>
                     <tr key={randomIntFromInterval(90000000, 1000000000)}>
                         <th>date</th>

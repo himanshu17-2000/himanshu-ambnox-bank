@@ -35,30 +35,40 @@ function Register() {
     function submithandler(e) {
         e.preventDefault()
 
-
-        if (name !== "" && number !== "" && email !== "" && amount!=="") {
-            var today = new Date();
-            var dat = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-            db.collection("customers").add({
-                name: name,
-                account: randomIntFromInterval(1000000000, 9999999999),
-                email: email,
-                amount: parseInt(amount),
-                number: parseInt(number),
-                date: dat
-            })
-                .then(() => {
-                    console.log("HA BHAI HOGYA ADMISSION ")
-
+        if (name !== "" && number !== "" && email !== "" && amount !== "") {
+            if (amount > 1000000) {
+                alert("Aukaat anusaar pese daalein ")
+                setname("")
+                setamount("")
+                setemail("")
+                setnumber("")
+            }
+            else {
+                var today = new Date();
+                var dat = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+                db.collection("customers").add({
+                    name: name,
+                    account: randomIntFromInterval(1000000000, 9999999999),
+                    email: email,
+                    amount: parseInt(amount),
+                    number: parseInt(number),
+                    date: dat
                 })
-                .catch(error => {
-                    alert(error.message)
+                    .then(() => {
+                        console.log("HA BHAI HOGYA ADMISSION ")
 
-                })
-            setname("")
-            setamount("")
-            setemail("")
-            setnumber("")
+                    })
+                    .catch(error => {
+                        alert(error.message)
+
+                    })
+                setname("")
+                setamount("")
+                setemail("")
+                setnumber("")
+
+
+            }
 
 
 

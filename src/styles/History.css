@@ -5,12 +5,9 @@
 }
 
 .history {
-    margin-top: 2px;
-    background: rgb(54, 54, 54);
     min-height: 100vh;
+    background: rgb(54, 54, 54);
     overflow: scroll;
-    padding-left: 10px;
-    padding-right: 10px;
 }
 .history-header{
     color: aliceblue;
@@ -19,22 +16,25 @@
 
 .tble {
     min-width: 100%;
-    margin: auto;
-    
+    margin: auto; 
     background: transparent;
     color: aliceblue;
     font-weight: bolder;
+    
+
 }
 
 .tble th {
     text-transform: capitalize;
     font-size: 1.3rem;
+    padding-left: 1%;
 }
 
 .tble td {
-    padding-top: 10px;
+    padding-top: 0.7%;
+    padding-left: 1%;
     text-transform: capitalize;
-    border-right: 0.5px solid rgb(80, 80, 80);
+    border-right: 1px solid rgb(80, 80, 80);
 }
 
 .tble tr {
