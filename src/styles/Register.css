@@ -17,6 +17,7 @@
     transition: 0.7s;
     padding: 70px 30px;
     box-shadow: 2px 2px 2px white;
+   
 }
 
 .inputfield {
@@ -68,5 +69,18 @@
 .button:hover {
     background: rgba(43, 243, 43, 0.3);
     color: #f0f8ff;
+}
 
+@media only screen and (max-width: 850px) {
+    .form {
+        width: 100%;
+        text-align: center;
+    }
+    .form input {
+        width: 100%;
+       
+    }
+    .button{
+        width: 100%;
+    }
 }
