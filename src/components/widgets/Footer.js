@@ -13,7 +13,7 @@ function Footer() {
                         <ul>
                             <li className="follow-list" id="linkedin"  ><a href="https://www.linkedin.com/in/himanshu-kumar-amb/"  rel="noreferrer" target="_blank"> <i className="fa fa-linkedin "></i>. linked in </a></li>
                             <li className="follow-list" id="instagram" ><a href="https://www.instagram.com/himanshu_kumar_amb/" rel="noreferrer" target="_blank"> <i className="fa fa-instagram "></i>. instagram </a></li>
-                            <li className="follow-list" id="github"><a href="https://github.com/himanshu17-2000"  rel="noreferrer" target="_blank"> <i className="fa fa-github "></i>.github </a></li>
+                            <li className="follow-list" id="github"><a href="#"  rel="noreferrer" target="_blank"> <i className="fa fa-github "></i>.github </a></li>
                         </ul>
 
                     </div>
