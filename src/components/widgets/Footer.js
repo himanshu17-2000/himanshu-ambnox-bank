@@ -23,7 +23,7 @@ function Footer() {
                         <ul>
                             <li id="mail"> <i className="fa fa-envelope" aria-hidden="true"></i> mail: earthboxer@gmail.com</li>
                             <li id="fiver"><i className="fa fa-wrench "></i> <a id="hte" rel="noreferrer"   href="https://www.fiverr.com/earthboxer?up_rollout=true" target="_blank"><i className="fa fa-fiver "></i> fiver: earthboxer</a></li>
-                            <li id="phone"><i className="fa fa-phone "></i> phone :7024885234</li>
+                            <li id="phone"><i className="fa fa-phone "></i> phone :702485234</li>
                         </ul>
                     </div>
                     <div className="col-lg-4 footer-col projects">
