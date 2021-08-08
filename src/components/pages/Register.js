@@ -74,7 +74,7 @@ function Register() {
 
         }
         else {
-            alert("saaari field bharo")
+            alert("ALL fields are compulsory")
         }
 
 
@@ -100,12 +100,12 @@ function Register() {
                     </div>
                     <div className="  inputfield">
                         <h3>Number</h3>
-                        <input type="text" value={number} onChange={setnumberhandler} />
+                        <input type="number" value={number} onChange={setnumberhandler} />
                     </div>
 
                     <div className="  inputfield">
                         <h3>Amount</h3>
-                        <input type="text" value={amount} onChange={setamountthandler} />
+                        <input type="number" value={amount} onChange={setamountthandler} />
                     </div>
 
 

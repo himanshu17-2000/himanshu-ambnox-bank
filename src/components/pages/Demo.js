@@ -38,7 +38,7 @@ const Demo = () => {
             db.collection("customers").where("name", "==", fromname).get()
                 .then((querySnapshot) => {
                     querySnapshot.forEach((doc) => {
-                        if (money <= doc.data().amount){
+                        if (money <= doc.data().amount) {
                             db.collection("customers").doc(doc.id).set({
                                 name: doc.data().name,
                                 email: doc.data().email,
@@ -51,36 +51,45 @@ const Demo = () => {
                             db.collection("customers").where("name", "==", toname).get()
                                 .then((querySnapshot) => {
                                     querySnapshot.forEach((doc) => {
-
-                                        db.collection("customers").doc(doc.id).set({
-                                            name: doc.data().name,
-                                            email: doc.data().email,
-                                            account: doc.data().account,
-                                            number: doc.data().number,
-                                            amount: parseInt(doc.data().amount) + parseInt(money),
-                                        })
-
-
-                                        var today = new Date();
-                                        var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-                                        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-                                        db.collection("history2").add({
-                                            from: fromname,
-                                            to: toname,
-                                            money: money,
-                                            time: time,
-                                            date: date,
+                                        if (toname !== fromname) {
+                                            db.collection("customers").doc(doc.id).set({
+                                                name: doc.data().name,
+                                                email: doc.data().email,
+                                                account: doc.data().account,
+                                                number: doc.data().number,
+                                                amount: parseInt(doc.data().amount) + parseInt(money),
+                                            })
 
 
-                                        })
-                                            .then(() => {
-                                                console.log(date, time)
+                                            var today = new Date();
+                                            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+                                            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                                            db.collection("history2").add({
+                                                from: fromname,
+                                                to: toname,
+                                                money: money,
+                                                time: time,
+                                                date: date,
+
 
                                             })
-                                            .catch(error => {
-                                                alert(error.message)
-                                            })
-                                        setmessage("Money transfered : " + money + " rs from " + fromname + " to " + toname)
+                                                .then(() => {
+                                                    console.log(date, time)
+
+                                                })
+                                                .catch(error => {
+                                                    alert(error.message)
+                                                })
+                                            setmessage("Money transfered : " + money + " rs from " + fromname + " to " + toname)
+
+                                        }
+                                        else{
+                                            setmoney(null)
+                                            settoname("")
+                                            setmessage("RECIEVER IS SAME AS SENDER , TRANSACTION IS FAILED")
+
+                                        }
+
 
 
 
@@ -94,7 +103,7 @@ const Demo = () => {
                         }
                         else {
 
-                            setmoney(null)
+                            setmoney('')
                             settoname("")
                             setmessage(" AMOUNT TOO MUCH TRANSACTION FAILED !")
                         }
@@ -110,7 +119,7 @@ const Demo = () => {
 
         }
         else {
-            alert("sab fields bharo")
+            alert("ALL FIELDS ARE COMPULSORY")
         }
 
 
@@ -129,7 +138,7 @@ const Demo = () => {
                     settoname(e.target.value)
                 }} /><br />
                 <label>Amount </label><br />
-                <input type="text" value={money} onChange={(e) => {
+                <input type="number" value={money} onChange={(e) => {
                     setmoney(e.target.value)
                 }} />
                 <br />
