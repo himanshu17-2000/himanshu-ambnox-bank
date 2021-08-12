@@ -37,7 +37,7 @@ function Register() {
 
         if (name !== "" && number !== "" && email !== "" && amount !== "") {
             if (amount > 1000000) {
-                alert("Aukaat anusaar pese daalein ")
+                alert("Deposite amount should be less than 10 lakhs  ")
                 setname("")
                 setamount("")
                 setemail("")
