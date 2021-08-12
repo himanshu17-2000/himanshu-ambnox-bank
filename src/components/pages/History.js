@@ -8,7 +8,7 @@ function History() {
         return Math.floor(Math.random() * (max - min + 1) + min)
     }
     useEffect(() => {
-        db.collection('history2').orderBy("date", "desc").orderBy("unique", "desc").limit(17).onSnapshot(snapshot => {
+        db.collection('history2').orderBy("date", "desc").orderBy("series", "desc").limit(17).onSnapshot(snapshot => {
             sethistory(snapshot.docs.map(doc => doc.data()))
         })
 

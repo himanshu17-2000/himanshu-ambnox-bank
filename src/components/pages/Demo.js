@@ -33,16 +33,16 @@ const Demo = () => {
     }
 
     useEffect(() => {
-        setInterval(()=>{
+        setInterval(() => {
             fetchfromInfo()
-        } , 100)
+        }, 100)
 
         db.collection("customers").onSnapshot((snapshot) => {
             setNames(snapshot.docs.map(doc => (doc.data().name)))
 
         })
 
-    },[])
+    }, [])
 
     function submithandler(e) {
         e.preventDefault()
@@ -83,20 +83,17 @@ const Demo = () => {
                         var today = new Date();
                         var date = today.getDate() + '-' + (today.getMonth() + 1) + "-" + today.getFullYear()
                         var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-                        var unique = parseInt(today.getHours()) +parseInt( today.getMinutes()) + parseInt(today.getSeconds());
+                        var unique = parseInt(today.getHours()) + parseInt(today.getMinutes()) + parseInt(today.getSeconds()) + parseInt(today.getDate()) + parseInt((today.getMonth() + 1)) + parseInt(today.getFullYear())
                         db.collection("history2").add({
                             from: fromname,
                             to: toname,
                             money: money,
                             time: time,
                             date: date,
-                            unique : unique,
-                            
-
-
+                            series: unique,
                         })
                             .then(() => {
-                                console.log(date, time)
+                                console.log(date, time, unique)
 
                             })
                             .catch(error => {
@@ -109,20 +106,20 @@ const Demo = () => {
 
                     }
                     else {
-                        
+
                         setmessage("reciever not found ")
 
                     }
                 }
                 else {
-                   
+
                     setmessage("amount insufficent")
                 }
 
 
             }
             else {
-                
+
                 setmessage("Reciever same as sender")
             }
 
