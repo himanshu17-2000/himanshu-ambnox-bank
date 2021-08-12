@@ -83,12 +83,15 @@ const Demo = () => {
                         var today = new Date();
                         var date = today.getDate() + '-' + (today.getMonth() + 1) + "-" + today.getFullYear()
                         var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                        var unique = parseInt(today.getHours()) +parseInt( today.getMinutes()) + parseInt(today.getSeconds());
                         db.collection("history2").add({
                             from: fromname,
                             to: toname,
                             money: money,
                             time: time,
                             date: date,
+                            unique : unique,
+                            
 
 
                         })
@@ -120,7 +123,7 @@ const Demo = () => {
             }
             else {
                 
-                setmessage("Reciever same as sender ")
+                setmessage("Reciever same as sender")
             }
 
         }
