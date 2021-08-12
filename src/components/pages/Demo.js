@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import "../../styles/Demo.css"
 import { db } from '../../Firebase'
+import { name } from 'file-loader'
 
 const Demo = () => {
     const { transfer } = useParams()
@@ -11,15 +12,14 @@ const Demo = () => {
     const [message, setmessage] = useState("")
     const [senderaccount, setsenderaccount] = useState(null)
     const [senderamount, setsenderammount] = useState(null)
+    const [names, setNames] = useState([])
     const [toname, settoname] = useState("")
     const [money, setmoney] = useState("")
 
-    useEffect(() => {
+    const fetchfromInfo = () => {
         db.collection("customers").where("name", "==", fromname).get()
             .then((querySnapshot) => {
                 querySnapshot.forEach((doc) => {
-
-
                     setsender(doc.data().name)
                     setsenderaccount(doc.data().account)
                     setsenderammount(doc.data().amount)
@@ -30,98 +30,104 @@ const Demo = () => {
             .catch((error) => {
                 console.log("Error getting documents: ", error);
             });
+    }
 
-    }, null)
+    useEffect(() => {
+        setInterval(()=>{
+            fetchfromInfo()
+        } , 100)
+
+        db.collection("customers").onSnapshot((snapshot) => {
+            setNames(snapshot.docs.map(doc => (doc.data().name)))
+
+        })
+
+    },[])
+
     function submithandler(e) {
         e.preventDefault()
+
         if (toname !== "" && money !== "") {
-            db.collection("customers").where("name", "==", fromname).get()
-                .then((querySnapshot) => {
-                    querySnapshot.forEach((doc) => {
-                        if (money <= doc.data().amount) {
-                            db.collection("customers").doc(doc.id).set({
-                                name: doc.data().name,
-                                email: doc.data().email,
-                                account: doc.data().account,
-                                number: doc.data().number,
-                                amount: parseInt(doc.data().amount) - parseInt(money),
+            if (sender !== toname) {
+                if (money <= senderamount) {
+                    if (names.includes(toname)) {
+                        db.collection("customers").where("name", "==", fromname).get()
+                            .then((querySnapshot) => {
+                                querySnapshot.forEach((doc) => {
+
+                                    db.collection("customers").doc(doc.id).set({
+                                        name: doc.data().name,
+                                        email: doc.data().email,
+                                        account: doc.data().account,
+                                        number: doc.data().number,
+                                        amount: parseInt(doc.data().amount) - parseInt(money),
+                                    })
+                                })
+
                             })
+                        db.collection("customers").where("name", "==", toname).get()
+                            .then((querySnapshot) => {
+                                querySnapshot.forEach((doc) => {
+                                    db.collection("customers").doc(doc.id).set({
+                                        name: doc.data().name,
+                                        email: doc.data().email,
+                                        account: doc.data().account,
+                                        number: doc.data().number,
+                                        amount: parseInt(doc.data().amount) + parseInt(money),
+                                    })
+
+                                })
 
 
-                            db.collection("customers").where("name", "==", toname).get()
-                                .then((querySnapshot) => {
-                                    querySnapshot.forEach((doc) => {
-                                        if (toname !== fromname) {
-                                            db.collection("customers").doc(doc.id).set({
-                                                name: doc.data().name,
-                                                email: doc.data().email,
-                                                account: doc.data().account,
-                                                number: doc.data().number,
-                                                amount: parseInt(doc.data().amount) + parseInt(money),
-                                            })
+                            })
+                        var today = new Date();
+                        var date = today.getDate() + '-' + (today.getMonth() + 1) + "-" + today.getFullYear()
+                        var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                        db.collection("history2").add({
+                            from: fromname,
+                            to: toname,
+                            money: money,
+                            time: time,
+                            date: date,
 
 
-                                            var today = new Date();
-                                            var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-                                            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-                                            db.collection("history2").add({
-                                                from: fromname,
-                                                to: toname,
-                                                money: money,
-                                                time: time,
-                                                date: date,
+                        })
+                            .then(() => {
+                                console.log(date, time)
+
+                            })
+                            .catch(error => {
+                                alert(error.message)
+                            })
+                        setmoney('')
+                        settoname("")
+                        setmessage(money + " rs transfered from " + fromname + " to " + toname)
 
 
-                                            })
-                                                .then(() => {
-                                                    console.log(date, time)
+                    }
+                    else {
+                        
+                        setmessage("reciever not found ")
 
-                                                })
-                                                .catch(error => {
-                                                    alert(error.message)
-                                                })
-                                            setmessage("Money transfered : " + money + " rs from " + fromname + " to " + toname)
-
-                                        }
-                                        else{
-                                            setmoney(null)
-                                            settoname("")
-                                            setmessage("RECIEVER IS SAME AS SENDER , TRANSACTION IS FAILED")
-
-                                        }
+                    }
+                }
+                else {
+                   
+                    setmessage("amount insufficent")
+                }
 
 
-
-
-
-
-                                    });
-                                }).catch((error) => {
-                                    console.log("Error getting documents: ", error);
-                                });
-
-                        }
-                        else {
-
-                            setmoney('')
-                            settoname("")
-                            setmessage(" AMOUNT TOO MUCH TRANSACTION FAILED !")
-                        }
-
-                    });
-                })
-                .catch((error) => {
-                    console.log("Error getting documents: ", error);
-                });
-
-            setmoney("")
-            settoname("")
+            }
+            else {
+                
+                setmessage("Reciever same as sender ")
+            }
 
         }
         else {
-            alert("ALL FIELDS ARE COMPULSORY")
-        }
 
+            alert("all fields are compulsory")
+        }
 
     }
     return (

@@ -35,8 +35,10 @@ function Home() {
                     <div className=" shit">
                         <h1 className="home-heading">SERVICES</h1>
                         <ul>
+                            <Link to="/history"><li>TRANSACTIONS </li></Link>
                             <Link to="users"> <li>TRANSFER</li></Link>
-                            <Link to="/history">   <li>TRANSACTIONS </li></Link>
+                            {/* <Link to="/deposite"><li>DEPOSITE</li></Link>
+                            <Link to="/withdraw"><li>WITHDRAW</li></Link> */}
                         </ul>
                     </div>
                 </div>

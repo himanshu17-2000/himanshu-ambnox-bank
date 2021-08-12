@@ -70,6 +70,15 @@
     background: rgba(43, 243, 43, 0.3);
     color: #f0f8ff;
 }
+input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+  
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
 
 @media only screen and (max-width: 850px) {
     .form {
