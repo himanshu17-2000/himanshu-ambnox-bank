@@ -83,7 +83,7 @@ const Demo = () => {
                         var today = new Date();
                         var date = today.getDate() + '-' + (today.getMonth() + 1) + "-" + today.getFullYear()
                         var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-                        var unique = parseInt(today.getHours()) + parseInt(today.getMinutes()) + parseInt(today.getSeconds()) + parseInt(today.getDate()) + parseInt((today.getMonth() + 1)) + parseInt(today.getFullYear())
+                        var unique = parseInt(today.getHours()) + parseInt(today.getMinutes())  + parseInt(today.getDate()) + parseInt((today.getMonth() + 1)) + parseInt(today.getFullYear())
                         db.collection("history2").add({
                             from: fromname,
                             to: toname,
