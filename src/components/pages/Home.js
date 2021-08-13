@@ -37,8 +37,8 @@ function Home() {
                         <ul>
                             <Link to="/history"><li>TRANSACTIONS </li></Link>
                             <Link to="users"> <li>TRANSFER</li></Link>
-                            {/* <Link to="/deposite"><li>DEPOSITE</li></Link>
-                            <Link to="/withdraw"><li>WITHDRAW</li></Link> */}
+                            <Link to="/depositeandwithdraw"><li>DEPOSITE / WITHDRAW</li></Link>
+
                         </ul>
                     </div>
                 </div>

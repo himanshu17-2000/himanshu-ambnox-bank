@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch,  } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, } from 'react-router-dom';
 import "./styles/App.css"
 import Navbar from './components/widgets/Navbar'
 import Home from './components/pages/Home'
@@ -8,7 +8,6 @@ import History from './components/pages/History'
 import Register from './components/pages/Register';
 import Demo from './components/pages/Demo';
 import Deposite from './components/pages/Deposite';
-import Withdraw from './components/pages/Withdraw';
 function App() {
   return (
     <Router>
@@ -17,13 +16,13 @@ function App() {
         <Switch>
           <Route path="/users/:transfer" exact component={Demo} />
           <Route path="/users" exact component={Users} />
-          <Route path="/deposite" exact component={Deposite} />
-          <Route path="/withdraw" exact component={Withdraw} />
+          <Route path="/depositeandwithdraw" exact component={Deposite} />
+
           <Route path="/history" exact component={History} />
           <Route path="/register" exact component={Register} />
           <Route path="/" exact component={Home} />
         </Switch>
-        
+
       </div>
     </Router>
   )

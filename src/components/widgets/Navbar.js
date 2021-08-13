@@ -6,17 +6,17 @@ function Navbar() {
     return (
 
         <div className="bar">
-           
 
-                <div className="container-fluid">
-                    <Link className="logo-link" to="/"  >
-                        <div className="logo">
-                            <h1>AMBNOX</h1> 
-                        </div>
-                    </Link>
-                    
+
+
+            <Link className="logo-link" to="/"  >
+                <div className="logo">
+                    <h1>AMBNOX</h1>
                 </div>
-            
+            </Link>
+
+
+
         </div>
 
     )

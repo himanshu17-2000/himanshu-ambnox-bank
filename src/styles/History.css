@@ -4,24 +4,29 @@
     padding: 0px;
 }
 
+/*----------------------------------------------------------------- */
+
+
+
 .history {
     min-height: 100vh;
     background: rgb(54, 54, 54);
-    overflow: scroll;
+    overflow-x: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: var(--thumbBG) var(--scrollbarBG);
 }
-.history-header{
+
+.history-header {
     color: aliceblue;
     text-align: center;
 }
 
 .tble {
     min-width: 100%;
-    margin: auto; 
+    margin: auto;
     background: transparent;
     color: aliceblue;
     font-weight: bolder;
-    
-
 }
 
 .tble th {
@@ -42,8 +47,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .history {
-        height: 100vh;
-        width: 100%;
+    td {
+        overflow: hidden;
     }
 }

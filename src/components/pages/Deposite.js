@@ -3,81 +3,128 @@ import "../../styles/Deposite.css"
 import { db } from '../../Firebase'
 
 function Deposite() {
-    const [account, setaccount] = useState("")
-    const [ammount, setammount] = useState("")
-    const [name, setname] = useState("")
-    const [curramount, setcurramount] = useState("")
-    const [message, setmessage] = useState("")
- 
-    function depositeSubmitHandler(e) {
+
+    const [bankaccount, setbankaccount] = useState([])
+    const [operation, setoperation] = useState('')
+    const [pesa, setpesa] = useState('')
+    const [message, setmessage] = useState('')
+    const [selectedaccount, setselectedaccount] = useState('')
+    useEffect(() => {
+        db.collection("customers").onSnapshot((snapshot) => {
+            setbankaccount(snapshot.docs.map(doc => (doc.data().name)))
+
+        })
+
+    }, [])
+
+
+    function submitHandler(e) {
         e.preventDefault()
-        db.collection("customers").where("account", "==", parseInt(account)).get()
-            .then((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
+        if (operation !== "" && selectedaccount !== '' && pesa !== '') {
+            if (operation == "D") {
+                db.collection("customers").where("name", "==", selectedaccount).get()
+                    .then((querySnapshot) => {
+                        querySnapshot.forEach((doc) => {
 
+                            db.collection("customers").doc(doc.id).set({
+                                name: doc.data().name,
+                                email: doc.data().email,
+                                account: doc.data().account,
+                                number: doc.data().number,
+                                amount: parseInt(doc.data().amount) + parseInt(pesa),
 
-                    setname(doc.data().name)
-                    setcurramount(doc.data().amount)
-                })
-            })
-            .catch((error) => {
-                console.log("Error getting documents: ", error);
-            });
-    }
-    function depositeAmountHandler(e) {
-        e.preventDefault()
+                            })
 
-        db.collection("customers").where("account", "==", parseInt(account)).get()
-            .then((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
+                            console.log("hogyabhai")
+                            console.log(operation, selectedaccount, "deposite")
+                            setmessage(pesa + " rs deposited to " + selectedaccount + "'s account")
+                            setoperation("")
+                            setpesa("")
+                            setselectedaccount("")
 
-                    db.collection("customers").doc(doc.id).set({
-                        name: doc.data().name,
-                        email: doc.data().email,
-                        account: doc.data().account,
-                        number: doc.data().number,
-                        amount: parseInt(doc.data().amount) + parseInt(ammount),
-
+                        })
                     })
-
-                    console.log("hogyabhai")
-                    setname("")
-                    setcurramount("")
-                    setammount("")
-                    setaccount("")
-                    setmessage(ammount + " rs Deposited to " + doc.data().name + "'s account ")
-                })
-            })
-            .catch((error) => {
-                console.log("Error getting documents: ", error);
-            });
+                    .catch((error) => {
+                        console.log("Error getting documents: ", error);
+                    });
 
 
+            }
+            else {
+                db.collection("customers").where("name", "==", selectedaccount).get()
+                    .then((querySnapshot) => {
+                        querySnapshot.forEach((doc) => {
+                            if (doc.data().amount >= pesa) {
+                                db.collection("customers").doc(doc.id).set({
+                                    name: doc.data().name,
+                                    email: doc.data().email,
+                                    account: doc.data().account,
+                                    number: doc.data().number,
+                                    amount: parseInt(doc.data().amount) - parseInt(pesa),
+
+                                })
+                                console.log("hogyabhai")
+                                console.log(operation, selectedaccount, "withdraw")
+                                setmessage(pesa + " rs withdrawn from "  + selectedaccount + "'s account")
+                                setoperation("")
+                                setpesa("")
+                                setselectedaccount("")
+
+
+
+                            }
+                            else {
+                                alert("ammount insufficient")
+                                setmessage("")
+                            }
+
+
+                        })
+                    })
+                    .catch((error) => {
+                        console.log("Error getting documents: ", error);
+                    });
+
+                // 
+            }
+
+        }
+        else {
+            alert("all fields are required")
+            setmessage("")
+        }
 
     }
 
     return (
         <div className="deposite-container">
-            <h1>EXPRESS DEPOSITE</h1>
+            <h1>EXPRESS WITHDRAWAL/DEPOSITION</h1>
             <div className="form-container container">
-                <form onSubmit={depositeSubmitHandler} >
-                    <h3>ENTER ACCOUNT NUMBER</h3>
+                <form onSubmit={submitHandler} >
+                    <h2>SELECT ACCOUNT </h2>
+                    <select className="customer-list-depo " value={selectedaccount} onChange={(e) => { setselectedaccount(e.target.value) }} data-flip="false" data-dropup-auto="false" >
+                        <option value="">ACCOUNTS:-</option>
 
-                    <input onChange={(e) => { setaccount(e.target.value) }} value={account} type="number" /><br />
-                    <button type="submit" className="btnnx ">GO</button>
+                        {bankaccount.map(item => {
+                            return <option key={item} value={item}>{item}</option>
+                        })}
+
+                    </select>
+
+                    <h2>Enter amount </h2>
+                    <input className="input" value={pesa} onChange={(e) => { setpesa(e.target.value) }} type="number" />
+
+                    <h2>Deposite / Withdraw</h2>
+
+                    <select className="customer-list-depo " value={operation} onChange={(e) => { setoperation(e.target.value) }} data-flip="false" data-dropup-auto="false"  >
+                        <option value="">OPRATION:-</option>
+                        <option value="D">DEPOSITE</option>
+                        <option value="W">WITHDRAW</option>
+                    </select><br />
+                    <button className="btndw btn-dark" type="submit">SUBMIT</button>
                 </form>
             </div>
-            <div className="withdraw-container container">
-                <span><strong>Name</strong> : {name}</span> <span> , <strong>Curr bal. </strong>  : {curramount} </span>
-                <h2>Enter deposite  amount </h2>
-                <form onSubmit={depositeAmountHandler} >
-                    <input onChange={(e) => { setammount(e.target.value) }} value={ammount} className="input" type="number" />
 
-                    <button type="submit" className="btnnx  ">GO</button>
-
-                </form>
-
-            </div>
             <div className="depo-message">
                 <h1>{message}</h1>
             </div>

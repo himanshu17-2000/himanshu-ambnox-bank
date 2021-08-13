@@ -7,7 +7,7 @@
 .users {
     min-height: 100vh;
     background: rgb(54, 54, 54);
-    overflow: scroll;
+    overflow-x: scroll;
 }
 
 .tbl {
@@ -47,5 +47,6 @@
 @media only screen and (max-width: 800px) {
     .tbl {
         width: auto;
+      
     }
 }
