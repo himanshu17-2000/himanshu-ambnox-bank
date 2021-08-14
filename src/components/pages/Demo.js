@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import "../../styles/Demo.css"
 import { db } from '../../Firebase'
-import { $ } from "jquery"
+
 
 const Demo = () => {
     const { transfer } = useParams()

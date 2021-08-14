@@ -21,7 +21,7 @@ function Deposite() {
     function submitHandler(e) {
         e.preventDefault()
         if (operation !== "" && selectedaccount !== '' && pesa !== '') {
-            if (operation == "D") {
+            if (operation === "D") {
                 db.collection("customers").where("name", "==", selectedaccount).get()
                     .then((querySnapshot) => {
                         querySnapshot.forEach((doc) => {
