@@ -10,5 +10,6 @@
 
   const app = firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore()
+  const rtdb = firebase.database()
   const timestamp = firebase.firestore.FieldValue.serverTimestamp;
-  export {db , app ,timestamp}
+  export {db , app ,timestamp ,rtdb}

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import {  Redirect } from 'react-router-dom'
 import { useParams } from 'react-router'
 import "../../styles/Demo.css"
 import { db } from '../../Firebase'
 
 
-const Demo = () => {
+const Demo = ({ authorize }) => {
     const { transfer } = useParams()
 
     const fromname = transfer
@@ -123,47 +124,53 @@ const Demo = () => {
         }
         else {
             setmessage("")
-            alert("all fields are compulsory")
+            alert("gandu sab field bhar ")
         }
 
     }
-    return (
-        <div className="demo-class">
-            <h1 className="demo-header">AMBNOX EXPRESS TRANSFER</h1>
-            <div className="demo-intro">
-                <span id="name">Name :- {sender}</span><br />
-                <span id="account">Account :- {senderaccount}</span><br />
-                <span id="amount">Amount :- {senderamount}</span><br />
-            </div>
-            <form className="demo-form" onSubmit={submithandler}>
-                <span>Reciever : </span>
-                <select className="customer-list " data-flip="false" data-dropup-auto="false" value={toname} onChange={(e) => {
-                    settoname(e.target.value)
-                }}>
-                    <option value="">customers:-</option>
-                    {names.map(item => {
-                        return <option key={item} value={item}>{item}</option>
-                    })}
+    if (!authorize) {
+        return <Redirect to="/" />
+    }
+    else {
+        return (
+            <div className="demo-class">
+                <h1 className="demo-header">AMBNOX EXPRESS TRANSFER</h1>
+                <div className="demo-intro">
+                    <span id="name">Name :- {sender}</span><br />
+                    <span id="account">Account :- {senderaccount}</span><br />
+                    <span id="amount">Amount :- {senderamount}</span><br />
+                </div>
+                <form className="demo-form" onSubmit={submithandler}>
+                    <span>Reciever : </span>
+                    <select className="customer-list " data-flip="false" data-dropup-auto="false" value={toname} onChange={(e) => {
+                        settoname(e.target.value)
+                    }}>
+                        <option value="">customers:-</option>
+                        {names.map(item => {
+                            return <option key={item} value={item}>{item}</option>
+                        })}
 
-                </select>
-
-
-                <br />
-                <br />
-                <span>Amount : </span>
-                <input type="number" value={money} onChange={(e) => {
-                    setmoney(e.target.value)
-                }} />
-                <br />
+                    </select>
 
 
-                <br />
-                <br />
-                <button className="btnn btn-success" type="submit" >Submit</button>
-            </form>
-            <h1 className="demo-message">{message}</h1>
-        </div >
-    )
+                    <br />
+                    <br />
+                    <span>Amount : </span>
+                    <input type="number" value={money} onChange={(e) => {
+                        setmoney(e.target.value)
+                    }} />
+                    <br />
+
+
+                    <br />
+                    <br />
+                    <button className="btnn btn-success" type="submit" >Submit</button>
+                </form>
+                <h1 className="demo-message">{message}</h1>
+            </div >
+        )
+    }
+
 
 }
 

@@ -1,7 +1,8 @@
 import React, { useState } from "react"
+import {  Redirect } from 'react-router-dom'
 import "../../styles/Register.css"
 import { db } from "../../Firebase"
-function Register() {
+function Register({ authorize }) {
     const [name, setname] = useState('')
     const [amount, setamount] = useState('')
     const [email, setemail] = useState('')
@@ -81,47 +82,52 @@ function Register() {
 
 
     }
+    if (!authorize) {
+        return <Redirect to="/" />
+    }
+    else {
+        return (
 
-    return (
+            <div className="container-fluid formcontainer">
+                <h1 className="register-header">REGISTER HERE </h1>
+                <form className="form" onSubmit={submithandler} >
+                    <div className="row p-0 m-0" >
 
-        <div className="container-fluid formcontainer">
-            <h1 className="register-header">REGISTER HERE </h1>
-            <form className="form" onSubmit={submithandler} >
-                <div className="row p-0 m-0" >
+                        <div className="inputfield">
+                            <h3>Name</h3>
+                            <input type="text" value={name} onChange={setnamehandler} />
+                        </div>
+                        <div className="inputfield">
+                            <h3>Email</h3>
+                            <input type="email" value={email} onChange={setemailhandler} />
 
-                    <div className="inputfield">
-                        <h3>Name</h3>
-                        <input type="text" value={name} onChange={setnamehandler} />
+                        </div>
+                        <div className="  inputfield">
+                            <h3>Number</h3>
+                            <input type="number" value={number} onChange={setnumberhandler} />
+                        </div>
+
+                        <div className="  inputfield">
+                            <h3>Amount</h3>
+                            <input type="number" value={amount} onChange={setamountthandler} />
+                        </div>
+
+
+                        <div >
+                            <button type="submit" className=" button  submit ">SUBMIT</button>
+                        </div>
                     </div>
-                    <div className="inputfield">
-                        <h3>Email</h3>
-                        <input type="email" value={email} onChange={setemailhandler} />
 
-                    </div>
-                    <div className="  inputfield">
-                        <h3>Number</h3>
-                        <input type="number" value={number} onChange={setnumberhandler} />
-                    </div>
+                </form>
 
-                    <div className="  inputfield">
-                        <h3>Amount</h3>
-                        <input type="number" value={amount} onChange={setamountthandler} />
-                    </div>
-
-
-                    <div >
-                        <button type="submit" className=" button  submit ">SUBMIT</button>
-                    </div>
-                </div>
-
-            </form>
-
-        </div>
+            </div>
 
 
 
 
-    )
+        )
+    }
+
 }
 
 

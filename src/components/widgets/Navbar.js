@@ -9,7 +9,7 @@ function Navbar() {
 
 
 
-            <Link className="logo-link" to="/"  >
+            <Link className="logo-link" to="/home"  >
                 <div className="logo">
                     <h1>AMBNOX</h1>
                 </div>

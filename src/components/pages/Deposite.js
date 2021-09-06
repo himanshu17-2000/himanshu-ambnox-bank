@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import "../../styles/Deposite.css"
 import { db } from '../../Firebase'
-
-function Deposite() {
+import {Redirect} from "react-router-dom"
+function Deposite({ authorize }) {
 
     const [bankaccount, setbankaccount] = useState([])
     const [operation, setoperation] = useState('')
@@ -65,7 +65,7 @@ function Deposite() {
                                 })
                                 console.log("hogyabhai")
                                 console.log(operation, selectedaccount, "withdraw")
-                                setmessage(pesa + " rs withdrawn from "  + selectedaccount + "'s account")
+                                setmessage(pesa + " rs withdrawn from " + selectedaccount + "'s account")
                                 setoperation("")
                                 setpesa("")
                                 setselectedaccount("")
@@ -96,41 +96,51 @@ function Deposite() {
 
     }
 
-    return (
-        <div className="deposite-container">
-            <h1>EXPRESS WITHDRAWAL/DEPOSITION</h1>
-            <div className="form-container container">
-                <form onSubmit={submitHandler} >
-                    <h2>SELECT ACCOUNT </h2>
-                    <select className="customer-list-depo " value={selectedaccount} onChange={(e) => { setselectedaccount(e.target.value) }} data-flip="false" data-dropup-auto="false" >
-                        <option value="">ACCOUNTS:-</option>
+    if (!authorize) {
+        return <Redirect to="/" />
+    }
+    else {
+        return (
+            <div className="deposite-container">
+                <h1>EXPRESS WITHDRAWAL/DEPOSITION</h1>
+                <div className="form-container container">
+                    <form onSubmit={submitHandler} >
+                        <h2>SELECT ACCOUNT </h2>
+                        <select className="customer-list-depo " value={selectedaccount} onChange={(e) => { setselectedaccount(e.target.value) }} data-flip="false" data-dropup-auto="false" >
+                            <option value="">ACCOUNTS:-</option>
 
-                        {bankaccount.map(item => {
-                            return <option key={item} value={item}>{item}</option>
-                        })}
+                            {bankaccount.map(item => {
+                                return <option key={item} value={item}>{item}</option>
+                            })}
 
-                    </select>
+                        </select>
 
-                    <h2>Enter amount </h2>
-                    <input className="input" value={pesa} onChange={(e) => { setpesa(e.target.value) }} type="number" />
+                        <h2>Enter amount </h2>
+                        <input className="input" value={pesa} onChange={(e) => { setpesa(e.target.value) }} type="number" />
 
-                    <h2>Deposite / Withdraw</h2>
+                        <h2>Deposite / Withdraw</h2>
 
-                    <select className="customer-list-depo " value={operation} onChange={(e) => { setoperation(e.target.value) }} data-flip="false" data-dropup-auto="false"  >
-                        <option value="">OPRATION:-</option>
-                        <option value="D">DEPOSITE</option>
-                        <option value="W">WITHDRAW</option>
-                    </select><br />
-                    <button className="btndw btn-dark" type="submit">SUBMIT</button>
-                </form>
+                        <select className="customer-list-depo " value={operation} onChange={(e) => { setoperation(e.target.value) }} data-flip="false" data-dropup-auto="false"  >
+                            <option value="">OPRATION:-</option>
+                            <option value="D">DEPOSITE</option>
+                            <option value="W">WITHDRAW</option>
+                        </select><br />
+                        <button className="btndw btn-dark" type="submit">SUBMIT</button>
+                    </form>
+                </div>
+
+                <div className="depo-message">
+                    <h1>{message}</h1>
+                </div>
+
             </div>
+        )
+    }
 
-            <div className="depo-message">
-                <h1>{message}</h1>
-            </div>
 
-        </div>
-    )
+
+
+
 }
 
 export default Deposite
