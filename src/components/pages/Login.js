@@ -29,7 +29,7 @@ function Login({ authorize, setauthorize }) {
 
 
     }
-    if (authorize === false) {
+    if (authorize === true) {
         return (
             <div className="login-container">
                 <Particles className="particles" />
