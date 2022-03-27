@@ -12,9 +12,7 @@ function Deposite({ authorize }) {
     useEffect(() => {
         db.collection("customers").onSnapshot((snapshot) => {
             setbankaccount(snapshot.docs.map(doc => (doc.data().name)))
-
         })
-
     }, [])
 
 

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {  Redirect } from 'react-router-dom'
 import { useParams } from 'react-router'
 import "../../styles/Demo.css"
-import { db } from '../../Firebase'
+import { db , timestamp } from '../../Firebase'
 
 
 const Demo = ({ authorize }) => {
@@ -16,7 +16,6 @@ const Demo = ({ authorize }) => {
     const [names, setNames] = useState([])
     const [toname, settoname] = useState("")
     const [money, setmoney] = useState("")
-
     const fetchfromInfo = () => {
         db.collection("customers").where("name", "==", fromname).get()
             .then((querySnapshot) => {
@@ -35,10 +34,8 @@ const Demo = ({ authorize }) => {
     }
 
     useEffect(() => {
-        setInterval(() => {
-            fetchfromInfo()
-        }, 100)
-
+    
+        fetchfromInfo()
         db.collection("customers").onSnapshot((snapshot) => {
             setNames(snapshot.docs.map(doc => (doc.data().name)))
 
@@ -46,7 +43,9 @@ const Demo = ({ authorize }) => {
 
 
     }, [])
-
+    setInterval(() => {
+        fetchfromInfo()
+    }, 1000)
     function submithandler(e) {
         e.preventDefault()
 
@@ -86,17 +85,17 @@ const Demo = ({ authorize }) => {
                     var today = new Date();
                     var date = today.getDate() + '-' + (today.getMonth() + 1) + "-" + today.getFullYear()
                     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-                    var unique = parseInt(today.getHours()) + parseInt(today.getMinutes()) + parseInt(today.getDate()) + parseInt((today.getMonth() + 1)) + parseInt(today.getFullYear())
+                   
                     db.collection("history2").add({
                         from: fromname,
                         to: toname,
                         money: money,
                         time: time,
                         date: date,
-                        series: unique,
+                        series: timestamp,
                     })
                         .then(() => {
-                            console.log(date, time, unique, toname, fromname)
+                            console.log(date, time, timestamp, toname, fromname)
 
                         })
                         .catch(error => {
@@ -105,6 +104,7 @@ const Demo = ({ authorize }) => {
                     setmoney('')
                     settoname("")
                     setmessage(money + " rs transfered from " + fromname + " to " + toname)
+                    
 
 
 
@@ -164,7 +164,7 @@ const Demo = ({ authorize }) => {
 
                     <br />
                     <br />
-                    <button className="btnn btn-success" type="submit" >Submit</button>
+                    <button className="btnn btn-success" type="submit"  >Submit</button>
                 </form>
                 <h1 className="demo-message">{message}</h1>
             </div >
