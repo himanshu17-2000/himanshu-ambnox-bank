@@ -30,7 +30,7 @@ function History({ authorize }) {
                             <th>from</th>
                             <th>to</th>
                             <th>money</th></tr>
-
+                        
                         {history.map((item) => {
 
                             return (
