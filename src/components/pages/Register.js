@@ -1,8 +1,9 @@
 import React, { useState } from "react"
-import {  Redirect } from 'react-router-dom'
+import {  Redirect , useHistory } from 'react-router-dom'
 import "../../styles/Register.css"
 import { db } from "../../Firebase"
 function Register({ authorize }) {
+    const history = useHistory()
     const [name, setname] = useState('')
     const [amount, setamount] = useState('')
     const [email, setemail] = useState('')
@@ -57,6 +58,7 @@ function Register({ authorize }) {
                 })
                     .then(() => {
                         console.log("HA BHAI HOGYA ADMISSION ")
+                        history.push('/home')
 
                     })
                     .catch(error => {
