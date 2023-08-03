@@ -8,7 +8,7 @@ function Navbar() {
         <div className="bar">
 
 
-
+{console.log("hello routes page ")}
             <Link className="logo-link" to="/home"  >
                 <div className="logo">
                     <h1>AMBNOX</h1>

@@ -4,7 +4,7 @@ import { db } from "../../Firebase"
 import cred from "../../images/credit-card.png"
 import TextChanger from '../widgets/TextChanger'
 import "../../styles/Home.css"
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 function Home() {
         return (
 
