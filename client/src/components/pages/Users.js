@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react'
 import { Link , Redirect} from 'react-router-dom'
 import { db } from "../../Firebase"
 import "../../styles/Users.css"
+import { get_users } from '../clientApi'
 function Users() {
     const [users, setusers] = useState([])
     useEffect(() => {
-        db.collection('customers').onSnapshot(snapshot => {
-
-            setusers(snapshot.docs.map(doc => (doc.data())))
-
-        })
+        const users = get_users()
+        setusers(users)
+        // db.collection('customers').onSnapshot(snapshot => {
+        //     setusers(snapshot.docs.map(doc => (doc.data())))
+        // })
 
     }, [])
         return (
