@@ -18,7 +18,7 @@ function App() {
         
         <Navbar />
         <Switch>
-          <Route exact path="/home/users/:transfer" element={Demo} />
+          <Route exact path="/home/user/:transfer" component={Demo} />
           <Route exact path="/home/users" component={Users} />
           <Route exact path="/home/depositeandwithdraw" component={Deposite} />
           <Route exact path="/home/history" component={History} />

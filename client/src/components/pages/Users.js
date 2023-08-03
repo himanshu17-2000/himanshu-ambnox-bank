@@ -4,14 +4,14 @@ import { db } from "../../Firebase"
 import "../../styles/Users.css"
 import { get_users } from '../clientApi'
 function Users() {
-    const [users, setusers] = useState([])
+    const [users, setUsers] = useState([])
     useEffect(() => {
-        const users = get_users()
-        setusers(users)
-        // db.collection('customers').onSnapshot(snapshot => {
-        //     setusers(snapshot.docs.map(doc => (doc.data())))
-        // })
-
+        const fetchUsers = async () => {
+            const usersData = await get_users();
+            setUsers(usersData);
+          };
+      
+          fetchUsers();
     }, [])
         return (
             <div className="users">
@@ -31,16 +31,11 @@ function Users() {
 
                             return (<tr key={item.account}>
                                 <td>{item.name}</td>
-                                <td>{item.number}</td>
+                                <td>{item.phone}</td>
                                 <td>{item.email}</td>
                                 <td>{item.account}</td>
                                 <td>{item.amount}</td>
-                                <td><Link to={{
-                                    pathname: `/home/users/${item.name}`, state: {
-                                        name: item.name,
-                                        account: item.amount
-                                    }
-                                }}><button className="btnnn btn-success">Transfer</button></Link></td>
+                                <td><Link to={`/home/user/${item.account}`}><button className="btnnn btn-success">Transfer</button></Link></td>
                             </tr>)
 
 
